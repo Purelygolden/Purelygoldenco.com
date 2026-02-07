@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>Purely Golden LLC | Campaign Coordination</title>
+    <meta name="description" content="Precision production logistics and operational oversight for creative campaigns.">
+    
+    <meta property="og:title" content="Purely Golden LLC">
+    <meta property="og:description" content="Campaign coordination for brands that need structure, clarity, and execution.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop">
+    <meta property="og:url" content="https://purelygolden.com">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-color: #FDFBF8;
+            --text-color: #333333;
+            --accent-gold: #B89B5E;
+            --border-color: #EAE6DE;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            --light-gold-bg: #F5F0E6; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 300px; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.8; 
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        h1, h2, h3 { font-family: 'Lora', serif; font-weight: 400; letter-spacing: -0.5px; }
+
+        nav { 
+            position: sticky; top: 0; z-index: 1000; 
+            background: rgba(253, 251, 248, 0.95); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            padding: 10px 0 10px; 
+            text-align: center;
+        }
+        
+        .logo-img { 
+            max-width: 220px;
+            height: auto; 
+            margin-bottom: -10px; 
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-menu { 
+            list-style: none; display: flex; justify-content: center; align-items: center; gap: 38px; flex-wrap: wrap; 
+            position: relative;
+            z-index: 2; 
+        }
+        .nav-menu a { 
+            color: var(--text-color); text-decoration: none; 
+            font-size: 0.85rem; font-weight: 500; 
+            text-transform: uppercase; letter-spacing: 1.5px; 
+            transition: color 0.3s; 
+        }
+        .nav-menu a:hover { color: var(--accent-gold); }
+
+        /* --- UPDATED LANGUAGE TOGGLE (Matches Nav Style) --- */
+        .lang-toggle {
+            cursor: pointer;
+            font-size: 0.85rem;      /* Matches nav links */
+            font-weight: 500;        /* Matches nav links */
+            text-transform: uppercase; /* Matches nav links */
+            letter-spacing: 1.5px;   /* Matches nav links */
+            color: var(--text-color);
+            transition: color 0.3s;
+            border: none;            /* Removed border */
+            background: transparent; /* Removed background */
+            padding: 0;              /* Removed padding */
+        }
+        .lang-toggle:hover {
+            color: var(--accent-gold); /* Same hover effect as links */
+        }
+
+        /* 1. Default State (English) */
+        .lang-es {
+            display: none !important;
+        }
+
+        /* 2. Spanish Mode Active */
+        body.spanish-mode .lang-en {
+            display: none !important;
+        }
+
+        body.spanish-mode .lang-es {
+            display: block !important;
+        }
+
+        body.spanish-mode span.lang-es,
+        body.spanish-mode a.lang-es,
+        body.spanish-mode i.lang-es,
+        body.spanish-mode strong.lang-es {
+            display: inline !important;
+        }
+        /* ------------------------------------ */
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 100px 0; }
+
+        /* --- SERVICES SECTION --- */
+        .services { 
+            background-color: transparent;
+            border: 1px solid var(--accent-gold); 
+            padding: 60px 40px;
+            margin-bottom: 100px;
+        }
+        .section-header { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+        .service-intro { text-align: center; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; color: #555; }
+        
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-box {
+            background: white;
+            padding: 40px 25px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            flex: 1 1 260px; 
+            max-width: 320px; 
+        }
+
+        .service-box:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .service-icon {
+            margin-bottom: 25px;
+        }
+        
+        .service-icon svg {
+            width: 45px;
+            height: 45px;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-text {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .disclaimer { 
+            margin-top: 40px; 
+            padding: 10px; 
+            border: none;
+            background: transparent;
+            font-size: 0.85rem; 
+            color: #999; 
+            text-align: center; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            font-style: normal;
+        }
+
+        .hero { text-align: center; padding: 80px 0 100px; }
+        .category-line { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; color: #999; margin-bottom: 25px; font-weight: 500; }
+        .hero h1 { font-size: 2.8rem; line-height: 1.3; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; }
+        .btn-main { display: inline-block; background-color: transparent; color: var(--text-color); border: 1px solid var(--text-color); padding: 16px 38px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.3s ease; }
+        .btn-main:hover { background-color: var(--text-color); color: var(--bg-color); }
+        
+        .hero-slider {
+            width: 100%;
+            height: 450px;
+            position: relative;
+            margin-bottom: 60px;
+            overflow: hidden;
+            filter: sepia(15%) contrast(85%) brightness(105%);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop');
+        }
+
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 70px; margin-top: 60px; }
+        .process-step { background: white; padding: 0 15px 40px 15px; border: 1px solid var(--border-color); position: relative; transition: all 0.4s ease; padding-top: 90px; min-height: 280px; }
+        .process-step:hover { transform: translateY(-5px); border-color: var(--accent-gold); box-shadow: var(--card-shadow); }
+        
+        .process-step span { 
+            position: absolute; 
+            top: 20px; 
+            right: 15px; 
+            font-family: 'Lora', serif; 
+            font-size: 3.2rem; 
+            line-height: 1; 
+            color: var(--accent-gold); 
+            opacity: 0.35; 
+            font-style: italic; 
+        }
+
+        @media (min-width: 900px) {
+            .process-step:not(:last-child)::after { 
+                content: "⟶"; 
+                position: absolute; 
+                right: -35px; 
+                top: 50%; 
+                transform: translate(50%, -50%); 
+                font-family: 'Lora', serif; 
+                font-size: 2rem; 
+                color: var(--accent-gold); 
+            }
+        }
+        
+        .process-step h3 { font-size: 1.1rem; margin-bottom: 15px; }
+        .process-step p { font-size: 0.85rem; color: #666; line-height: 1.6; }
+
+        .inquiry { background-color: white; }
+        .form-wrapper { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 30px; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; color: #999; }
+        .form-control { width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #ddd; font-family: 'Inter', sans-serif; font-size: 16px; background: transparent; outline: none; }
+        .form-control:focus { border-bottom-color: var(--accent-gold); }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .submit-btn { background-color: var(--text-color); color: white; border: none; padding: 18px 40px; font-family: 'Inter', sans-serif; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background-color: var(--accent-gold); }
+
+        .input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .calendar-trigger {
+            position: absolute;
+            right: 0;
+            bottom: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            fill: #999;
+            transition: 0.3s;
+        }
+        .calendar-trigger:hover {
+            fill: var(--accent-gold);
+        }
+        
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover {
+            background: var(--accent-gold) !important;
+            border-color: var(--accent-gold) !important;
+        }
+        .flatpickr-day.inRange {
+            box-shadow: -5px 0 0 #f0e6d2, 5px 0 0 #f0e6d2 !important;
+            background: #f0e6d2 !important;
+            border-color: #f0e6d2 !important;
+            color: var(--text-color) !important;
+        }
+        .flatpickr-months .flatpickr-month { color: var(--text-color) !important; fill: var(--text-color) !important; }
+        .flatpickr-current-month .flatpickr-monthDropdown-months { font-family: 'Lora', serif; font-weight: 500; }
+
+        footer { text-align: center; padding: 60px 0; font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid var(--border-color); }
+        .footer-links a { color: #999; text-decoration: none; margin: 0 12px; font-size: 0.7rem; transition: 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        
+        .social-icons {
+            display: flex; justify-content: center; gap: 25px; margin-bottom: 35px;
+            scroll-margin-top: 200px;
+        }
+        .social-link svg { width: 20px; height: 20px; fill: #999; transition: all 0.3s ease; }
+        .social-link:hover svg { fill: var(--accent-gold); transform: translateY(-2px); }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto; 
+            padding: 40px;
+            border: 1px solid var(--accent-gold);
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh; /* Keeps it within screen height */
+            overflow-y: auto; /* Adds scroll if text is long */
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            line-height: 1;
+        }
+        .close-btn:hover { color: var(--accent-gold); }
+
+        .modal-body { text-align: left; }
+        .modal-body h3 { margin-top: 0; color: var(--text-color); margin-bottom: 10px; text-align: center; font-size: 1.8rem; }
+        .modal-body h4 { font-family: 'Inter', sans-serif; font-size: 0.95rem; margin-top: 25px; margin-bottom: 10px; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .modal-body p { margin-bottom: 15px; font-size: 0.9rem; color: #555; line-height: 1.6; }
+        .modal-date { display: block; text-align: center; color: #999; font-size: 0.75rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 280px; }
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 70px 0; }
+            .logo-img { max-width: 160px; }
+            .nav-menu { flex-direction: column; gap: 16px; margin-top: 0px; } 
+            .process-grid { grid-template-columns: 1fr; gap: 50px; }
+            .process-step:not(:last-child)::after { content: "↓"; bottom: -35px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; }
+            .modal-content { margin: 15% auto; padding: 25px; width: 95%; max-height: 70vh; }
+            .services { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="logo.jpg" alt="Purely Golden LLC" class="logo-img">
+        <ul class="nav-menu">
+            <li><a href="#"><span class="lang-en">Home</span><span class="lang-es">Inicio</span></a></li>
+            <li><a href="#services"><span class="lang-en">Services</span><span class="lang-es">Servicios</span></a></li>
+            <li><a href="#process"><span class="lang-en">Process</span><span class="lang-es">Proceso</span></a></li>
+            <li><a href="#inquiry"><span class="lang-en">Inquiry</span><span class="lang-es">Consulta</span></a></li>
+            <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span></a></li>
+            <li class="lang-toggle" onclick="toggleLanguage()">EN | ES</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="hero reveal">
+            <span class="category-line lang-en">Campaign Coordination & Production Support</span>
+            <span class="category-line lang-es">Coordinación de Campañas y Soporte de Producción</span>
+            
+            <h1 class="lang-en">Campaign coordination for brands that need structure, clarity, and execution.</h1>
+            <h1 class="lang-es">Coordinación de campañas para marcas que necesitan estructura, claridad y ejecución.</h1>
+            
+            <a href="#inquiry" class="btn-main lang-en">Submit a Project Inquiry</a>
+            <a href="#inquiry" class="btn-main lang-es">Enviar Consulta de Proyecto</a>
+        </header>
+        
+        <div class="hero-slider reveal">
+            <div class="slide"></div>
+        </div>
+
+        <section id="services" class="section services reveal">
+            <h2 class="section-header lang-en">Services</h2>
+            <h2 class="section-header lang-es">Servicios</h2>
+            
+            <p class="service-intro lang-en">We provide the structural backbone for creative campaigns, ensuring logistics and timelines are met with precision.</p>
+            <p class="service-intro lang-es">Proporcionamos la estructura fundamental para campañas creativas, asegurando que la logística y los plazos se cumplan con precisión.</p>
+            
+            <div class="services-grid">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5h6m-6 8h6m-6 4h6"/></svg>
+                    </div>
+                    <p class="service-text lang-en">Campaign coordination & execution oversight</p>
+                    <p class="service-text lang-es">Coordinación de campañas y supervisión de ejecución</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
+                    <p class="service-text lang-en">Production planning and logistics</p>
+                    <p class="service-text lang-es">Planificación de producción y logística</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <p class="service-text lang-en">Photographer, model, and vendor coordination</p>
+                    <p class="service-text lang-es">Coordinación de fotógrafos, modelos y proveedores</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <p class="service-text lang-en">Timeline and deliverable management</p>
+                    <p class="service-text lang-es">Gestión de cronogramas y entregables</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <p class="service-text lang-en">Delivery of usage-ready content</p>
+                    <p class="service-text lang-es">Entrega de contenido listo para usar</p>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <span class="lang-en"><strong>Please Note:</strong> Purely Golden LLC is not a talent agency, production studio, or influencer management service.</span>
+                <span class="lang-es"><strong>Nota:</strong> Purely Golden LLC no es una agencia de talentos, estudio de producción ni servicio de gestión de influencers.</span>
+            </div>
+        </section>
+
+        <section id="process" class="section reveal">
+            <h2 class="section-header lang-en">How It Works</h2>
+            <h2 class="section-header lang-es">Cómo Funciona</h2>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <span>01</span>
+                    <h3 class="lang-en">Project Alignment</h3>
+                    <h3 class="lang-es">Alineación del Proyecto</h3>
+                    <p class="lang-en">We review your campaign needs to ensure our logistical support matches your goals.</p>
+                    <p class="lang-es">Revisamos las necesidades de su campaña para asegurar que nuestro apoyo logístico coincida con sus objetivos.</p>
+                </div>
+                <div class="process-step">
+                    <span>02</span>
+                    <h3 class="lang-en">Coordination</h3>
+                    <h3 class="lang-es">Coordinación</h3>
+                    <p class="lang-en">We manage the vendors, schedules, and pre-production details.</p>
+                    <p class="lang-es">Gestionamos los proveedores, horarios y detalles de preproducción.</p>
+                </div>
+                <div class="process-step">
+                    <span>03</span>
+                    <h3 class="lang-en">Oversight</h3>
+                    <h3 class="lang-es">Supervisión</h3>
+                    <p class="lang-en">On-set or remote management to ensure the campaign is executed flawlessly.</p>
+                    <p class="lang-es">Gestión en el set o remota para asegurar que la campaña se ejecute impecablemente.</p>
+                </div>
+                <div class="process-step">
+                    <span>04</span>
+                    <h3 class="lang-en">Delivery</h3>
+                    <h3 class="lang-es">Entrega</h3>
+                    <p class="lang-en">Final content is organized and handed off, ready for usage.</p>
+                    <p class="lang-es">El contenido final se organiza y se entrega, listo para su uso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="inquiry" class="section inquiry reveal">
+            <h2 class="section-header lang-en">Inquiry</h2>
+            <h2 class="section-header lang-es">Consulta</h2>
+            
+            <p class="service-intro lang-en">Tell us about your project. Fields marked * are required.</p>
+            <p class="service-intro lang-es">Cuéntenos sobre su proyecto. Los campos marcados con * son obligatorios.</p>
+            
+            <div class="form-wrapper">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="lang-en">Company Name *</label>
+                        <label class="lang-es">Nombre de la Empresa *</label>
+                        <input type="text" id="company" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-en">Contact Name *</label>
+                        <label class="lang-es">Nombre de Contacto *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-en">Email Address *</label>
+                        <label class="lang-es">Correo Electrónico *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-en">Contact Number <i>(Optional)</i></label>
+                        <label class="lang-es">Número de Contacto <i>(Opcional)</i></label>
+                        <input type="tel" id="phone" class="form-control" placeholder="(555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-en">Project Type</label>
+                        <label class="lang-es">Tipo de Proyecto</label>
+                        <input type="text" id="type" class="form-control" placeholder="e.g. Seasonal Lookbook, Product Launch">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="lang-en">Timeline (Start & End Date)</label>
+                        <label class="lang-es">Cronograma (Fecha de Inicio y Fin)</label>
+                        <div class="input-with-icon">
+                            <input type="text" id="timeline" class="form-control" placeholder="Select Date Range...">
+                            <svg class="calendar-trigger" viewBox="0 0 24 24" onclick="document.getElementById('timeline')._flatpickr.open()">
+                                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="lang-en">Brief Description</label>
+                        <label class="lang-es">Breve Descripción</label>
+                        <textarea id="desc" class="form-control" rows="5" placeholder="Tell us more about your project..."></textarea>
+                    </div>
+                    
+                    <button type="button" class="submit-btn lang-en" onclick="sendMail()">Submit Inquiry</button>
+                    <button type="button" class="submit-btn lang-es" onclick="sendMail()">Enviar Consulta</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div id="contact" class="social-icons">
+            <a href="https://www.instagram.com/purelygolden.co?igsh=MWhqMTJteXN3ZHZ0cg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.252-1.667 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.667-4.919-4.919-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.252 1.667-4.771 4.919-4.919 1.265-.058 1.645-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.272 2.695.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.623 6.78 6.981 6.98 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.623 6.98-6.98.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.2-4.358-2.623-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@purelygolden.co?_r=1&_t=ZS-93RDbP05raE" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.65-1.62-1.12v8.76c0 5.29-4.31 9.59-9.62 9.59-5.29 0-9.59-4.29-9.59-9.58 0-5.29 4.29-9.59 9.59-9.59.36 0 .73.02 1.09.06v4.25c-.12-.01-.24-.02-.36-.02-2.93 0-5.32 2.38-5.32 5.3 0 2.92 2.39 5.3 5.32 5.3 2.92 0 5.31-2.38 5.31-5.3V.02z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/purely-golden-co-21ab3b3a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h5.106v-8.316c0-2.133.418-4.314 2.869-4.314 2.412 0 2.445 2.287 2.445 4.6v8.03h5.051v-8.872c0-4.267-.91-7.547-5.885-7.547-2.392 0-3.978 1.332-4.618 2.576h-.069v-2.157h-4.931z"/></svg>
+            </a>
+        </div>
+        <div class="lang-en">&copy; 2026 Purely Golden LLC. All Rights Reserved.</div>
+        <div class="lang-es">&copy; 2026 Purely Golden LLC. Todos los derechos reservados.</div>
+        
+        <div class="footer-links">
+            <a onclick="openModal('privacyModal')" class="lang-en">Privacy Policy</a>
+            <a onclick="openModal('privacyModal')" class="lang-es">Política de Privacidad</a>
+            
+            <a onclick="openModal('termsModal')" class="lang-en">Terms of Service</a>
+            <a onclick="openModal('termsModal')" class="lang-es">Términos de Servicio</a>
+        </div>
+    </footer>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            
+            <div class="modal-body lang-en">
+                <h3>Privacy Policy</h3>
+                <span class="modal-date">Effective Date: 2.21.2026</span>
+
+                <h4>1. Introduction</h4>
+                <p>Purely Golden Co. (“Company,” “we,” “us,” or “our”), operated by Purely Golden LLC, values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and safeguard information when you visit our website or submit information through our online forms.</p>
+                <p>By accessing or using this website, you consent to the practices described in this Privacy Policy.</p>
+
+                <h4>2. Information We Collect</h4>
+                <p>We collect personal information only when voluntarily submitted through our intake or contact forms.</p>
+                <p>This information may include: Full name, Email address, Phone number, Business or brand information, Project details or inquiries, Any additional information you choose to provide.</p>
+                <p>We do not collect payment information through this website.</p>
+
+                <h4>3. How We Use Your Information</h4>
+                <p>Information collected through this website is used to: Respond to inquiries and intake submissions; Evaluate potential services or collaborations; Communicate regarding business opportunities, services, or next steps; Send business updates, promotional materials, or relevant announcements; Maintain internal business records.</p>
+
+                <h4>4. Sharing of Information</h4>
+                <p>We do not sell, rent, or trade your personal information.</p>
+                <p>Information may be shared only: Internally within Purely Golden LLC; With contractors or collaborators when necessary to evaluate or respond to an inquiry; When required by law, regulation, or legal process.</p>
+                <p>All shared information is handled confidentially.</p>
+
+                <h4>5. Cookies & Analytics</h4>
+                <p>This website may use cookies or analytics tools to understand general website traffic and improve functionality. These tools do not collect personally identifiable information submitted through intake forms. You may disable cookies through your browser settings if you choose.</p>
+
+                <h4>6. Data Security</h4>
+                <p>We implement reasonable administrative and technical safeguards designed to protect your personal information. However, no method of transmission over the Internet or electronic storage is completely secure.</p>
+
+                <h4>7. Data Retention & Marketing Communications</h4>
+                <p>Information submitted through our intake or contact forms may be retained for internal business records and for future communications, including service updates, promotional materials, and business-related announcements.</p>
+                <p>You may opt out of receiving promotional or marketing communications at any time by following the unsubscribe instructions included in our communications or by contacting us directly. Opting out of marketing communications does not affect inquiry-related or transactional communications.</p>
+                <p>Personal information is retained only for as long as reasonably necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
+
+                <h4>8. Your Rights</h4>
+                <p>You may request to: Access the personal information you submitted; Correct or update your information; Request deletion of your information; Opt out of marketing communications. Requests may be submitted using the contact information below.</p>
+
+                <h4>9. Children’s Privacy</h4>
+                <p>This website is not intended for individuals under the age of 18. We do not knowingly collect personal information from minors.</p>
+
+                <h4>10. Governing Law</h4>
+                <p>This Privacy Policy is governed by and construed in accordance with the laws of the State of Florida, United States.</p>
+
+                <h4>11. Changes to This Privacy Policy</h4>
+                <p>We reserve the right to update this Privacy Policy at any time. Any changes will be posted on this page with an updated effective date.</p>
+
+                <h4>12. Contact Information</h4>
+                <p>If you have questions about this Privacy Policy or our data practices, please contact:<br>
+                Purely Golden LLC<br>
+                Email: Purely.goldenn@gmail.com<br>
+                Florida, United States</p>
+            </div>
+
+            <div class="modal-body lang-es">
+                <h3>Política de Privacidad</h3>
+                <span class="modal-date">Fecha de vigencia: 21.2.2026</span>
+
+                <h4>1. Introducción</h4>
+                <p>Purely Golden Co. (“Compañía”, “nosotros”, “nos” o “nuestro”), operado por Purely Golden LLC, valora su privacidad y se compromete a proteger su información personal. Esta Política de privacidad explica cómo recopilamos, usamos, almacenamos y protegemos la información cuando visita nuestro sitio web o envía información a través de nuestros formularios en línea.</p>
+                <p>Al acceder o utilizar este sitio web, usted acepta las prácticas descritas en esta Política de privacidad.</p>
+
+                <h4>2. Información que recopilamos</h4>
+                <p>Recopilamos información personal solo cuando se envía voluntariamente a través de nuestros formularios de admisión o contacto.</p>
+                <p>Esta información puede incluir: nombre completo, dirección de correo electrónico, número de teléfono, información comercial o de marca, detalles del proyecto o consultas, cualquier información adicional que elija proporcionar.</p>
+                <p>No recopilamos información de pago a través de este sitio web.</p>
+
+                <h4>3. Cómo utilizamos su información</h4>
+                <p>La información recopilada a través de este sitio web se utiliza para: responder a consultas y envíos de admisión; evaluar posibles servicios o colaboraciones; comunicar sobre oportunidades comerciales, servicios o próximos pasos; enviar actualizaciones comerciales, materiales promocionales o anuncios relevantes; mantener registros comerciales internos.</p>
+
+                <h4>4. Intercambio de información</h4>
+                <p>No vendemos, alquilamos ni comercializamos su información personal.</p>
+                <p>La información se puede compartir solo: internamente dentro de Purely Golden LLC; con contratistas o colaboradores cuando sea necesario para evaluar o responder a una consulta; cuando lo requiera la ley, el reglamento o el proceso legal.</p>
+                <p>Toda la información compartida se maneja de manera confidencial.</p>
+
+                <h4>5. Cookies y análisis</h4>
+                <p>Este sitio web puede utilizar cookies o herramientas de análisis para comprender el tráfico general del sitio web y mejorar la funcionalidad. Estas herramientas no recopilan información de identificación personal enviada a través de formularios de admisión. Puede deshabilitar las cookies a través de la configuración de su navegador si así lo desea.</p>
+
+                <h4>6. Seguridad de datos</h4>
+                <p>Implementamos medidas de seguridad administrativas y técnicas razonables diseñadas para proteger su información personal. Sin embargo, ningún método de transmisión a través de Internet o almacenamiento electrónico es completamente seguro.</p>
+
+                <h4>7. Retención de datos y comunicaciones de marketing</h4>
+                <p>La información enviada a través de nuestros formularios de admisión o contacto puede conservarse para registros comerciales internos y para futuras comunicaciones, incluidas actualizaciones de servicios, materiales promocionales y anuncios relacionados con el negocio.</p>
+                <p>Puede optar por no recibir comunicaciones promocionales o de marketing en cualquier momento siguiendo las instrucciones para cancelar la suscripción incluidas en nuestras comunicaciones o comunicándose con nosotros directamente. La exclusión voluntaria de las comunicaciones de marketing no afecta las comunicaciones transaccionales o relacionadas con consultas.</p>
+                <p>La información personal se conserva solo durante el tiempo que sea razonablemente necesario para cumplir con los fines descritos en esta Política de privacidad, a menos que la ley exija o permita un período de retención más largo.</p>
+
+                <h4>8. Sus derechos</h4>
+                <p>Puede solicitar: acceder a la información personal que envió; corregir o actualizar su información; solicitar la eliminación de su información; optar por no recibir comunicaciones de marketing. Las solicitudes se pueden enviar utilizando la información de contacto a continuación.</p>
+
+                <h4>9. Privacidad de los niños</h4>
+                <p>Este sitio web no está destinado a personas menores de 18 años. No recopilamos a sabiendas información personal de menores.</p>
+
+                <h4>10. Ley aplicable</h4>
+                <p>Esta Política de privacidad se rige e interpreta de acuerdo con las leyes del Estado de Florida, Estados Unidos.</p>
+
+                <h4>11. Cambios a esta Política de privacidad</h4>
+                <p>Nos reservamos el derecho de actualizar esta Política de privacidad en cualquier momento. Cualquier cambio se publicará en esta página con una fecha de vigencia actualizada.</p>
+
+                <h4>12. Información de contacto</h4>
+                <p>Si tiene preguntas sobre esta Política de privacidad o nuestras prácticas de datos, comuníquese con:<br>
+                Purely Golden LLC<br>
+                Correo electrónico: Purely.goldenn@gmail.com<br>
+                Florida, Estados Unidos</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            
+            <div class="modal-body lang-en">
+                <h3>Terms & Conditions</h3>
+                <span class="modal-date">Effective Date: 2.21.2026</span>
+
+                <h4>1. Agreement to Terms</h4>
+                <p>These Terms & Conditions (“Terms”) govern your access to and use of the Purely Golden Co. website (the “Website”), operated by Purely Golden LLC (“Company,” “we,” “us,” or “our”).</p>
+                <p>By accessing or using this Website, you agree to be bound by these Terms. If you do not agree, please do not use the Website.</p>
+
+                <h4>2. Purpose of Website</h4>
+                <p>This Website is provided for informational and inquiry purposes only. Submitting an intake or contact form does not create a client relationship, contractual obligation, or guarantee of services.</p>
+                <p>All services offered by Purely Golden Co. are subject to separate written agreements.</p>
+
+                <h4>3. Use of Website</h4>
+                <p>You agree to use this Website only for lawful purposes and in a manner that does not: Violate applicable laws or regulations; Infringe upon the rights of others; Disrupt or interfere with the Website’s functionality; Attempt unauthorized access to systems or data.</p>
+                <p>We reserve the right to restrict or terminate access to the Website at our discretion.</p>
+
+                <h4>4. No Professional or Legal Advice</h4>
+                <p>Content provided on this Website is for general informational purposes only and does not constitute legal, financial, or professional advice. You should not rely on Website content as a substitute for professional consultation.</p>
+
+                <h4>5. Intellectual Property</h4>
+                <p>All content on this Website, including but not limited to text, graphics, logos, images, designs, and branding, is the exclusive property of Purely Golden LLC or its licensors and is protected by intellectual property laws. You may not copy, reproduce, distribute, or exploit any content without prior written permission.</p>
+
+                <h4>6. Third-Party Links</h4>
+                <p>This Website may contain links to third-party websites for convenience. We do not control and are not responsible for the content, policies, or practices of third-party sites. Access to third-party websites is at your own risk.</p>
+
+                <h4>7. Limitation of Liability</h4>
+                <p>To the fullest extent permitted by law, Purely Golden LLC shall not be liable for any direct, indirect, incidental, consequential, or special damages arising out of or related to your use of the Website. Use of the Website is at your own risk.</p>
+
+                <h4>8. Indemnification</h4>
+                <p>You agree to indemnify and hold harmless Purely Golden LLC, its owners, contractors, and affiliates from any claims, liabilities, damages, or expenses arising from your misuse of the Website or violation of these Terms.</p>
+
+                <h4>9. Privacy</h4>
+                <p>Your use of this Website is also governed by our Privacy Policy, which explains how we collect and use information submitted through the Website.</p>
+
+                <h4>10. Governing Law</h4>
+                <p>These Terms shall be governed by and interpreted in accordance with the laws of the State of Florida, without regard to conflict of law principles.</p>
+
+                <h4>11. Changes to Terms</h4>
+                <p>We reserve the right to update or modify these Terms at any time. Continued use of the Website after changes are posted constitutes acceptance of the revised Terms.</p>
+
+                <h4>12. Contact Information</h4>
+                <p>For questions regarding these Terms & Conditions, contact:<br>
+                Purely Golden LLC<br>
+                Email: Purely.goldenn@gmail.com<br>
+                Florida, United States</p>
+            </div>
+
+            <div class="modal-body lang-es">
+                <h3>Términos y Condiciones</h3>
+                <span class="modal-date">Fecha de vigencia: 21.2.2026</span>
+
+                <h4>1. Acuerdo de Términos</h4>
+                <p>Estos Términos y Condiciones ("Términos") rigen su acceso y uso del sitio web de Purely Golden Co. (el "Sitio web"), operado por Purely Golden LLC ("Compañía", "nosotros", "nos" o "nuestro").</p>
+                <p>Al acceder o utilizar este sitio web, usted acepta estar sujeto a estos Términos. Si no está de acuerdo, no utilice el sitio web.</p>
+
+                <h4>2. Propósito del sitio web</h4>
+                <p>Este sitio web se proporciona únicamente con fines informativos y de consulta. El envío de un formulario de admisión o contacto no crea una relación con el cliente, una obligación contractual ni una garantía de servicios.</p>
+                <p>Todos los servicios ofrecidos por Purely Golden Co. están sujetos a acuerdos escritos por separado.</p>
+
+                <h4>3. Uso del sitio web</h4>
+                <p>Usted acepta usar este sitio web solo para fines legales y de una manera que no: viole las leyes o regulaciones aplicables; infrinja los derechos de otros; interrumpa o interfiera con la funcionalidad del sitio web; intente el acceso no autorizado a sistemas o datos.</p>
+                <p>Nos reservamos el derecho de restringir o cancelar el acceso al sitio web a nuestra discreción.</p>
+
+                <h4>4. Sin asesoramiento profesional o legal</h4>
+                <p>El contenido proporcionado en este sitio web es solo para fines informativos generales y no constituye asesoramiento legal, financiero o profesional. No debe confiar en el contenido del sitio web como sustituto de una consulta profesional.</p>
+
+                <h4>5. Propiedad intelectual</h4>
+                <p>Todo el contenido de este sitio web, incluidos, entre otros, texto, gráficos, logotipos, imágenes, diseños y marcas, es propiedad exclusiva de Purely Golden LLC o sus licenciantes y está protegido por las leyes de propiedad intelectual. No puede copiar, reproducir, distribuir ni explotar ningún contenido sin un permiso previo por escrito.</p>
+
+                <h4>6. Enlaces de terceros</h4>
+                <p>Este sitio web puede contener enlaces a sitios web de terceros para su conveniencia. No controlamos y no somos responsables del contenido, las políticas o las prácticas de los sitios de terceros. El acceso a sitios web de terceros es bajo su propio riesgo.</p>
+
+                <h4>7. Limitación de responsabilidad</h4>
+                <p>En la mayor medida permitida por la ley, Purely Golden LLC no será responsable de ningún daño directo, indirecto, incidental, consecuente o especial que surja de o esté relacionado con su uso del sitio web. El uso del sitio web es bajo su propio riesgo.</p>
+
+                <h4>8. Indemnización</h4>
+                <p>Usted acepta indemnizar y eximir de responsabilidad a Purely Golden LLC, sus propietarios, contratistas y afiliados de cualquier reclamo, responsabilidad, daño o gasto que surja de su mal uso del sitio web o violación de estos Términos.</p>
+
+                <h4>9. Privacidad</h4>
+                <p>Su uso de este sitio web también se rige por nuestra Política de privacidad, que explica cómo recopilamos y usamos la información enviada a través del sitio web.</p>
+
+                <h4>10. Ley aplicable</h4>
+                <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes del Estado de Florida, sin tener en cuenta los principios de conflicto de leyes.</p>
+
+                <h4>11. Cambios en los Términos</h4>
+                <p>Nos reservamos el derecho de actualizar o modificar estos Términos en cualquier momento. El uso continuado del sitio web después de que se publiquen los cambios constituye la aceptación de los Términos revisados.</p>
+
+                <h4>12. Información de contacto</h4>
+                <p>Si tiene preguntas sobre estos Términos y Condiciones, comuníquese con:<br>
+                Purely Golden LLC<br>
+                Correo electrónico: Purely.goldenn@gmail.com<br>
+                Florida, Estados Unidos</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <script>
+        // Updated to RANGE mode
+        flatpickr("#timeline", {
+            mode: "range",          
+            dateFormat: "F j, Y",   
+            disableMobile: "true",  
+            allowInput: true        
+        });
+
+        // Phone Number Formatting Logic
+        document.getElementById('phone').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // SCROLL REVEAL
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal();
+
+        // LANGUAGE TOGGLE FUNCTION
+        function toggleLanguage() {
+            document.body.classList.toggle('spanish-mode');
+        }
+
+        // SEND MAIL FUNCTION
+        function sendMail() {
+            var company = document.getElementById('company').value.trim();
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var type = document.getElementById('type').value.trim();
+            var timeline = document.getElementById('timeline').value.trim();
+            var desc = document.getElementById('desc').value.trim();
+
+            if (!company || !name || !email) {
+                // Alert handles both languages based on current mode
+                if(document.body.classList.contains('spanish-mode')) {
+                    alert("Por favor complete todos los campos obligatorios (Nombre de la Empresa, Nombre de Contacto, Correo Electrónico).");
+                } else {
+                    alert("Please fill in all required fields (Company Name, Contact Name, Email Address).");
+                }
+                return;
+            }
+
+            var subject = "New Project Inquiry from " + company;
+            var body = "Name: " + name + "%0D%0A" + 
+                       "Company: " + company + "%0D%0A" + 
+                       "Email: " + email + "%0D%0A" + 
+                       "Phone: " + phone + "%0D%0A" + 
+                       "Project Type: " + type + "%0D%0A" + 
+                       "Timeline: " + timeline + "%0D%0A" + 
+                       "Description: " + desc;
+
+            window.location.href = "mailto:booking@purelygolden.com?subject=" + encodeURIComponent(subject) + "&body=" + body;
+        }
+
+        // --- MODAL FUNCTIONS ---
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal if user clicks outside the white box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
