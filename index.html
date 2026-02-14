@@ -296,19 +296,19 @@
             }
             .nav-menu.active { display: flex; }
 
-            /* --- UPDATED ARROW LOGIC --- */
-            /* Increased gap to make room for the arrow */
-            .process-grid { grid-template-columns: 1fr; gap: 70px; } 
+            /* --- UPDATED ARROW LOGIC (SPACED AND CENTERED) --- */
+            /* 1. Increase gap between boxes to 90px (gives more room) */
+            .process-grid { grid-template-columns: 1fr; gap: 90px; } 
 
-            /* Arrow positioned absolutely OUTSIDE the box */
+            /* 2. Position arrow evenly between them (-65px is center) */
             .process-step:not(:last-child)::after { 
                 content: "↓"; 
                 position: absolute; 
-                bottom: -45px; 
+                bottom: -65px; 
                 left: 50%; 
                 transform: translateX(-50%); 
                 font-size: 2rem; 
-                color: var(--accent-gold); /* Matched Gold */
+                color: var(--accent-gold); 
                 font-family: 'Lora', serif;
             }
 
@@ -489,206 +489,6 @@
             <a onclick="openModal('termsModal')" class="lang-es">Términos de Servicio</a>
         </div>
     </footer>
-
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
-            <div class="modal-body lang-en">
-                <h3>Privacy Policy</h3>
-                <span class="modal-date">Effective Date: 2.21.2026</span>
-                <h4>1. Introduction</h4>
-                <p>Purely Golden Co. (“Company,” “we,” “us,” or “our”), operated by Purely Golden LLC, values your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and safeguard information when you visit our website or submit information through our online forms.</p>
-                <p>By accessing or using this website, you consent to the practices described in this Privacy Policy.</p>
-
-                <h4>2. Information We Collect</h4>
-                <p>We collect personal information only when voluntarily submitted through our intake or contact forms.</p>
-                <p>This information may include: Full name, Email address, Phone number, Business or brand information, Project details or inquiries, Any additional information you choose to provide.</p>
-                <p>We do not collect payment information through this website.</p>
-
-                <h4>3. How We Use Your Information</h4>
-                <p>Information collected through this website is used to: Respond to inquiries and intake submissions; Evaluate potential services or collaborations; Communicate regarding business opportunities, services, or next steps; Send business updates, promotional materials, or relevant announcements; Maintain internal business records.</p>
-
-                <h4>4. Sharing of Information</h4>
-                <p>We do not sell, rent, or trade your personal information.</p>
-                <p>Information may be shared only: Internally within Purely Golden LLC; With contractors or collaborators when necessary to evaluate or respond to an inquiry; When required by law, regulation, or legal process.</p>
-                <p>All shared information is handled confidentially.</p>
-
-                <h4>5. Cookies & Analytics</h4>
-                <p>This website may use cookies or analytics tools to understand general website traffic and improve functionality. These tools do not collect personally identifiable information submitted through intake forms. You may disable cookies through your browser settings if you choose.</p>
-
-                <h4>6. Data Security</h4>
-                <p>We implement reasonable administrative and technical safeguards designed to protect your personal information. However, no method of transmission over the Internet or electronic storage is completely secure.</p>
-
-                <h4>7. Data Retention & Marketing Communications</h4>
-                <p>Information submitted through our intake or contact forms may be retained for internal business records and for future communications, including service updates, promotional materials, and business-related announcements.</p>
-                <p>You may opt out of receiving promotional or marketing communications at any time by following the unsubscribe instructions included in our communications or by contacting us directly. Opting out of marketing communications does not affect inquiry-related or transactional communications.</p>
-                <p>Personal information is retained only for as long as reasonably necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
-
-                <h4>8. Your Rights</h4>
-                <p>You may request to: Access the personal information you submitted; Correct or update your information; Request deletion of your information; Opt out of marketing communications. Requests may be submitted using the contact information below.</p>
-
-                <h4>9. Children’s Privacy</h4>
-                <p>This website is not intended for individuals under the age of 18. We do not knowingly collect personal information from minors.</p>
-
-                <h4>10. Governing Law</h4>
-                <p>This Privacy Policy is governed by and construed in accordance with the laws of the State of Florida, United States.</p>
-
-                <h4>11. Changes to This Privacy Policy</h4>
-                <p>We reserve the right to update this Privacy Policy at any time. Any changes will be posted on this page with an updated effective date.</p>
-
-                <h4>12. Contact Information</h4>
-                <p>If you have questions about this Privacy Policy or our data practices, please contact:<br>
-                Purely Golden LLC<br>
-                Email: Purely.goldenn@gmail.com<br>
-                Florida, United States</p>
-            </div>
-            <div class="modal-body lang-es">
-                <h3>Política de Privacidad</h3>
-                <span class="modal-date">Fecha de vigencia: 21.2.2026</span>
-                <h4>1. Introducción</h4>
-                <p>Purely Golden Co. (“Compañía”, “nosotros”, “nos” o “nuestro”), operado por Purely Golden LLC, valora su privacidad y se compromete a proteger su información personal. Esta Política de privacidad explica cómo recopilamos, usamos, almacenamos y protegemos la información cuando visita nuestro sitio web o envía información a través de nuestros formularios en línea.</p>
-                <p>Al acceder o utilizar este sitio web, usted acepta las prácticas descritas en esta Política de privacidad.</p>
-
-                <h4>2. Información que recopilamos</h4>
-                <p>Recopilamos información personal solo cuando se envía voluntariamente a través de nuestros formularios de admisión o contacto.</p>
-                <p>Esta información puede incluir: nombre completo, dirección de correo electrónico, número de teléfono, información comercial o de marca, detalles del proyecto o consultas, cualquier información adicional que elija proporcionar.</p>
-                <p>No recopilamos información de pago a través de este sitio web.</p>
-
-                <h4>3. Cómo utilizamos su información</h4>
-                <p>La información recopilada a través de este sitio web se utiliza para: responder a consultas y envíos de admisión; evaluar posibles servicios o colaboraciones; comunicar sobre oportunidades comerciales, servicios o próximos pasos; enviar actualizaciones comerciales, materiales promocionales o anuncios relevantes; mantener registros comerciales internos.</p>
-
-                <h4>4. Intercambio de información</h4>
-                <p>No vendemos, alquilamos ni comercializamos su información personal.</p>
-                <p>La información se puede compartir solo: internamente dentro de Purely Golden LLC; con contratistas o colaboradores cuando sea necesario para evaluar o responder a una consulta; cuando lo requiera la ley, el reglamento o el proceso legal.</p>
-                <p>Toda la información compartida se maneja de manera confidencial.</p>
-
-                <h4>5. Cookies y análisis</h4>
-                <p>Este sitio web puede utilizar cookies o herramientas de análisis para comprender el tráfico general del sitio web y mejorar la funcionalidad. Estas herramientas no recopilan información de identificación personal enviada a través de formularios de admisión. Puede deshabilitar las cookies a través de la configuración de su navegador si así lo desea.</p>
-
-                <h4>6. Seguridad de datos</h4>
-                <p>Implementamos medidas de seguridad administrativas y técnicas razonables diseñadas para proteger su información personal. Sin embargo, ningún método de transmisión a través de Internet o almacenamiento electrónico es completamente seguro.</p>
-
-                <h4>7. Retención de datos y comunicaciones de marketing</h4>
-                <p>La información enviada a través de nuestros formularios de admisión o contacto puede conservarse para registros comerciales internos y para futuras comunicaciones, incluidas actualizaciones de servicios, materiales promocionales y anuncios relacionados con el negocio.</p>
-                <p>Puede optar por no recibir comunicaciones promocionales o de marketing en cualquier momento siguiendo las instrucciones para cancelar la suscripción incluidas en nuestras comunicaciones o comunicándose con nosotros directamente. La exclusión voluntaria de las comunicaciones de marketing no afecta las comunicaciones transaccionales o relacionadas con consultas.</p>
-                <p>La información personal se conserva solo durante el tiempo que sea razonablemente necesario para cumplir con los fines descritos en esta Política de privacidad, a menos que la ley exija o permita un período de retención más largo.</p>
-
-                <h4>8. Sus derechos</h4>
-                <p>Puede solicitar: acceder a la información personal que envió; corregir o actualizar su información; solicitar la eliminación de su información; optar por no recibir comunicaciones de marketing. Las solicitudes se pueden enviar utilizando la información de contacto a continuación.</p>
-
-                <h4>9. Privacidad de los niños</h4>
-                <p>Este sitio web no está destinado a personas menores de 18 años. No recopilamos a sabiendas información personal de menores.</p>
-
-                <h4>10. Ley aplicable</h4>
-                <p>Esta Política de privacidad se rige e interpreta de acuerdo con las leyes del Estado de Florida, Estados Unidos.</p>
-
-                <h4>11. Cambios a esta Política de privacidad</h4>
-                <p>Nos reservamos el derecho de actualizar esta Política de privacidad en cualquier momento. Cualquier cambio se publicará en esta página con una fecha de vigencia actualizada.</p>
-
-                <h4>12. Información de contacto</h4>
-                <p>Si tiene preguntas sobre esta Política de privacidad o nuestras prácticas de datos, comuníquese con:<br>
-                Purely Golden LLC<br>
-                Correo electrónico: Purely.goldenn@gmail.com<br>
-                Florida, Estados Unidos</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
-            <div class="modal-body lang-en">
-                <h3>Terms & Conditions</h3>
-                <span class="modal-date">Effective Date: 2.21.2026</span>
-                <h4>1. Agreement to Terms</h4>
-                <p>These Terms & Conditions (“Terms”) govern your access to and use of the Purely Golden Co. website (the “Website”), operated by Purely Golden LLC (“Company,” “we,” “us,” or “our”).</p>
-                <p>By accessing or using this Website, you agree to be bound by these Terms. If you do not agree, please do not use the Website.</p>
-
-                <h4>2. Purpose of Website</h4>
-                <p>This Website is provided for informational and inquiry purposes only. Submitting an intake or contact form does not create a client relationship, contractual obligation, or guarantee of services.</p>
-                <p>All services offered by Purely Golden Co. are subject to separate written agreements.</p>
-
-                <h4>3. Use of Website</h4>
-                <p>You agree to use this Website only for lawful purposes and in a manner that does not: Violate applicable laws or regulations; Infringe upon the rights of others; Disrupt or interfere with the Website’s functionality; Attempt unauthorized access to systems or data.</p>
-                <p>We reserve the right to restrict or terminate access to the Website at our discretion.</p>
-
-                <h4>4. No Professional or Legal Advice</h4>
-                <p>Content provided on this Website is for general informational purposes only and does not constitute legal, financial, or professional advice. You should not rely on Website content as a substitute for professional consultation.</p>
-
-                <h4>5. Intellectual Property</h4>
-                <p>All content on this Website, including but not limited to text, graphics, logos, images, designs, and branding, is the exclusive property of Purely Golden LLC or its licensors and is protected by intellectual property laws. You may not copy, reproduce, distribute, or exploit any content without prior written permission.</p>
-
-                <h4>6. Third-Party Links</h4>
-                <p>This Website may contain links to third-party websites for convenience. We do not control and are not responsible for the content, policies, or practices of third-party sites. Access to third-party websites is at your own risk.</p>
-
-                <h4>7. Limitation of Liability</h4>
-                <p>To the fullest extent permitted by law, Purely Golden LLC shall not be liable for any direct, indirect, incidental, consequential, or special damages arising out of or related to your use of the Website. Use of the Website is at your own risk.</p>
-
-                <h4>8. Indemnification</h4>
-                <p>You agree to indemnify and hold harmless Purely Golden LLC, its owners, contractors, and affiliates from any claims, liabilities, damages, or expenses arising from your misuse of the Website or violation of these Terms.</p>
-
-                <h4>9. Privacy</h4>
-                <p>Your use of this Website is also governed by our Privacy Policy, which explains how we collect and use information submitted through the Website.</p>
-
-                <h4>10. Governing Law</h4>
-                <p>These Terms shall be governed by and interpreted in accordance with the laws of the State of Florida, without regard to conflict of law principles.</p>
-
-                <h4>11. Changes to Terms</h4>
-                <p>We reserve the right to update or modify these Terms at any time. Continued use of the Website after changes are posted constitutes acceptance of the revised Terms.</p>
-
-                <h4>12. Contact Information</h4>
-                <p>For questions regarding these Terms & Conditions, contact:<br>
-                Purely Golden LLC<br>
-                Email: Purely.goldenn@gmail.com<br>
-                Florida, United States</p>
-            </div>
-            <div class="modal-body lang-es">
-                <h3>Términos y Condiciones</h3>
-                <span class="modal-date">Fecha de vigencia: 21.2.2026</span>
-                <h4>1. Acuerdo de Términos</h4>
-                <p>Estos Términos y Condiciones ("Términos") rigen su acceso y uso del sitio web de Purely Golden Co. (el "Sitio web"), operado por Purely Golden LLC ("Compañía", "nosotros", "nos" o "nuestro").</p>
-                <p>Al acceder o utilizar este sitio web, usted acepta estar sujeto a estos Términos. Si no está de acuerdo, no utilice el sitio web.</p>
-
-                <h4>2. Propósito del sitio web</h4>
-                <p>Este sitio web se proporciona únicamente con fines informativos y de consulta. El envío de un formulario de admisión o contacto no crea una relación con el cliente, una obligación contractual ni una garantía de servicios.</p>
-                <p>Todos los servicios ofrecidos por Purely Golden Co. están sujetos a acuerdos escritos por separado.</p>
-
-                <h4>3. Uso del sitio web</h4>
-                <p>Usted acepta usar este sitio web solo para fines legales y de una manera que no: viole las leyes o regulaciones aplicables; infrinja los derechos de otros; interrumpa o interfiera con la funcionalidad del sitio web; intente el acceso no autorizado a sistemas o datos.</p>
-                <p>Nos reservamos el derecho de restringir o cancelar el acceso al sitio web a nuestra discreción.</p>
-
-                <h4>4. Sin asesoramiento profesional o legal</h4>
-                <p>El contenido proporcionado en este sitio web es solo para fines informativos generales y no constituye asesoramiento legal, financiero o profesional. No debe confiar en el contenido del sitio web como sustituto de una consulta profesional.</p>
-
-                <h4>5. Propiedad intelectual</h4>
-                <p>Todo el contenido de este sitio web, incluidos, entre otros, texto, gráficos, logotipos, imágenes, diseños y marcas, es propiedad exclusiva de Purely Golden LLC o sus licenciantes y está protegido por las leyes de propiedad intelectual. No puede copiar, reproducir, distribuir ni explotar ningún contenido sin un permiso previo por escrito.</p>
-
-                <h4>6. Enlaces de terceros</h4>
-                <p>Este sitio web puede contener enlaces a sitios web de terceros para su conveniencia. No controlamos y no somos responsables del contenido, las políticas o las prácticas de los sitios de terceros. El acceso a sitios web de terceros es bajo su propio riesgo.</p>
-
-                <h4>7. Limitación de responsabilidad</h4>
-                <p>En la mayor medida permitida por la ley, Purely Golden LLC no será responsable de ningún daño directo, indirecto, incidental, consecuente o especial que surja de o esté relacionado con su uso del sitio web. El uso del sitio web es bajo su propio riesgo.</p>
-
-                <h4>8. Indemnización</h4>
-                <p>Usted acepta indemnizar y eximir de responsabilidad a Purely Golden LLC, sus propietarios, contratistas y afiliados de cualquier reclamo, responsabilidad, daño o gasto que surja de su mal uso del sitio web o violación de estos Términos.</p>
-
-                <h4>9. Privacidad</h4>
-                <p>Su uso de este sitio web también se rige por nuestra Política de privacidad, que explica cómo recopilamos y usamos la información enviada a través del sitio web.</p>
-
-                <h4>10. Ley aplicable</h4>
-                <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes del Estado de Florida, sin tener en cuenta los principios de conflicto de leyes.</p>
-
-                <h4>11. Cambios en los Términos</h4>
-                <p>Nos reservamos el derecho de actualizar o modificar estos Términos en cualquier momento. El uso continuado del sitio web después de que se publiquen los cambios constituye la aceptación de los Términos revisados.</p>
-
-                <h4>12. Información de contacto</h4>
-                <p>Si tiene preguntas sobre estos Términos y Condiciones, comuníquese con:<br>
-                Purely Golden LLC<br>
-                Correo electrónico: Purely.goldenn@gmail.com<br>
-                Florida, Estados Unidos</p>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     
